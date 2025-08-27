@@ -12,7 +12,7 @@ After messing around with ChatGPT, I asked it the following (after giving it my 
 
 >Expansion prompt : I don't want to do it with you now, I want courses with external learning resources I can follow. Each crash course should be complete-able within a 40hour window ( i.e. a work week )
 
-This is what it gave me back
+This is what it gave me back, even though I'm not actually going to follow it.
 
 
 🚀 CRASH COURSE 1: PHP – Modern Full-Stack PHP (with Laravel)
