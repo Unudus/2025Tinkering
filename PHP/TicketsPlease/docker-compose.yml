@@ -1,0 +1,77 @@
+# Mysql db service based on official imaage notes (https://hub.docker.com/_/mysql) instead of 
+# video tutorial (https://www.youtube.com/watch?v=1aDuaPhJT8) for dockerised Laravel setup, 
+# as they're using postgres instead of MySQL used by like Laracast tutorial... also using local envs (https://laracasts.com/series/laravel-api-master-class/) suggests
+
+services:
+  app:
+    build:
+      context: ./TicketsPlease
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+        - docker-network
+    ports:
+      - 9000:9000
+    depends_on:
+      - db
+  # this is only applicable once/if I get into workers, but lets have it queued up anyway
+  queue-worker:
+    build:
+      context: ./TicketsPlease
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+      - docker-network
+    depends_on:
+      - db
+    command: php artisan queue:work
+  # this is for webserver software caddy, bit overkill but following the guide
+  caddy:
+    image: caddy:latest
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./TicketsPlease:/var/www/html
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - docker-network
+    depends_on:
+      - app
+  db:
+    image: mysql:latest
+    platform: linux/amd64
+    ports:
+      - 3306:3306
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT}
+      - MYSQL_DATABASE=${MYSQL_DB}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASS}
+    networks:
+      - docker-network
+  redis:
+    image: redis:latest
+    platform: linux/amd64
+    ports:
+      - 6379:6379
+    restart: always
+    volumes: 
+      - redis-data:/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - REDIS_PASSWORD=${REDIS_PASS}
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    networks:
+      - docker-network
+
+volumes:
+  db-data:
+  redis-data:
+
+networks:
+  docker-network:
+    driver: bridge

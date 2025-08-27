@@ -2,7 +2,16 @@
 
 repos specifically around brushing up on whats happening with PHP, tinkering etc
 
----
+### Rolling Commentary
+
+see root's readme, these are the PHP notes
+
+* So Laravel has an installer these days but it & all the official "make a clean repo" [instructions](https://laravel.com/docs/12.x#creating-a-laravel-project) install locally. Given I'm going to be brushing up on multiple languages containerised is the way to go
+    * apparently this setup [guide](php.new) is very trendy, but it's all local install, looking at [this](https://www.reddit.com/r/laravel/comments/1jd6fh5/laravel_12_sail_docs_removed/) it seems like Laravel are trying to funnel towards paid-products for it
+    * Okay, gonna try following this [video](https://www.youtube.com/watch?v=1aDuaPhJT8E) which claims to give me a nice clean repo
+        * that was an uphill fight and several trouble shooting sessions. I'll commit at this point as it's an effectively clean Laravel + DB (in docker) setup now, although the .env obviously needs porting/names changing etc
+        * One initially messy aspect, but that's nice is sticking the Laravel 1 level down from most (docker file & laravel env) files changed
+* Laracasts seem stale, at least step 0 and step 1 wise. Seems like Laravel's going through growing pains on how to set it up
 
 ## Side note
 
@@ -10,7 +19,7 @@ After messing around with ChatGPT, I asked it the following (after giving it my 
 
 >  I want you to create 3 crash courses on programming ( language/Framework knowledge & experience, and practice). One for PHP, one for Whatever Javascript/Typescript framework is in the most job listings, and one for C#. The outcome should be knowledge of all applicable events for the language ( rise of popular tools, style of programming being popular etc ) and sufficient code I could upload to somewhere like github to show competence
 
->Expansion prompt : I don't want to do it with you now, I want courses with external learning resources I can follow. Each crash course should be complete-able within a 40hour window ( i.e. a work week )
+> Expansion prompt : I don't want to do it with you now, I want courses with external learning resources I can follow. Each crash course should be complete-able within a 40hour window ( i.e. a work week )
 
 This is what it gave me back, even though I'm not actually going to follow it.
 
