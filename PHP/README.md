@@ -11,7 +11,13 @@ see root's readme, these are the PHP notes
     * Okay, gonna try following this [video](https://www.youtube.com/watch?v=1aDuaPhJT8E) which claims to give me a nice clean repo
         * that was an uphill fight and several trouble shooting sessions. I'll commit at this point as it's an effectively clean Laravel + DB (in docker) setup now, although the .env obviously needs porting/names changing etc
         * One initially messy aspect, but that's nice is sticking the Laravel 1 level down from most (docker file & laravel env) files changed
+        * Slept on it, and the lack of live code updates kinda kills the encapsulation. Seems the guide maker's answer was to run it locally for dev...que cera
 * Laracasts seem stale, at least step 0 and step 1 wise. Seems like Laravel's going through growing pains on how to set it up
+* Gave up on the explicit approach above as a time sink, giving [Laravel Sail](https://laravel.com/docs/12.x/sail) a go, even if it's not being fully supported
+    * Gives me the security ick that the preferred way of using this is curl'ing a remote bash script ( curl -s https://laravel.build/ticketsplease | bash )
+    * Took longer to run than I'd expect, but then it's bundled a lot of opinionated stuff in. I've got Mellisearch, mailpit & selenium all in there for some reason
+        * okay looks like you can exclude some cruff with arguments ( curl -s "https://laravel.build/ticketsplease?with=mysql,redis" | bash )
+    * feels a little annoying the session default is DB but the migration to create that table isn't done but as long as you switch to file its low friction
 
 ## Side note
 
