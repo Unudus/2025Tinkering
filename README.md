@@ -15,6 +15,7 @@ Just to keep sane during the fun of setup, I'm going to capture some thoughts in
 * Wow markdown completely fell out my head, these rolling notes will be a nice way of reminding myself of at least hte basics
 * 1st Project, as they often do, turned into a side exercise/refresher in docker. [This](* Quickly turned into a side refresher on the joys of docker and system setup. [This](https://medium.com/@victoria.kruczek_15509/create-a-local-database-with-docker-compose-and-view-it-in-mysql-workbench-974aee047874) guide was handy) was handy and I'll likely reuse as future exercises get containerised
     * One I forget : think about if you want to let docker manage its own volume or create an explicit host-system-dir thats mounted for persistent data
+* fun gotcha Postman was ignoring the proxy, causing localhost/ to return an old partially configured apache setup. It's simple enough to expliclity proxy via localhost though
 
 ### PHP
 see the [readme](PHP/readme.md)

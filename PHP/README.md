@@ -17,7 +17,21 @@ see root's readme, these are the PHP notes
     * Gives me the security ick that the preferred way of using this is curl'ing a remote bash script ( curl -s https://laravel.build/ticketsplease | bash )
     * Took longer to run than I'd expect, but then it's bundled a lot of opinionated stuff in. I've got Mellisearch, mailpit & selenium all in there for some reason
         * okay looks like you can exclude some cruff with arguments ( curl -s "https://laravel.build/ticketsplease?with=mysql,redis" | bash )
+        * There maybe an --api parameter according to [this](https://x.com/taylorotwell/status/1483892844968427532) but that checklist seems easy enough to port over testing
+        * Wow this feels like wack a mole : so [this](https://laracasts.com/index.php/discuss/channels/laravel/routesapiphp-removed-in-laravel-12-use-web-or-restore-it) tipped me off to people restoring "API" functionality in 12
     * feels a little annoying the session default is DB but the migration to create that table isn't done but as long as you switch to file its low friction
+* I was intending to follow [this](https://laracasts.com/series/laravel-api-master-class/episodes/1) Laracast course, but looks like it pivots to paywall. Pivoting to [this](https://apiacademy.treblle.com/laravel-api-course/intro-and-setup) instead, seems to have gotten positive feedback online and matches my refresher goals.
+* So immediately this new guide uses Breeze which isn't an option anymore, but [it doesn't look too hard to after the fact it back in](https://laraveldaily.com/post/how-to-install-laravel-breeze-laravel-12).
+    * Looks like the preferred way is to use directly using [sanctum](https://laravel.com/docs/12.x/sanctum), but since this guide uses breeze to do this, that can be for another time
+    * Summary of what I did to get to close to the guides baseline (lets you pick up around 7:30)
+
+        * `curl -s "https://laravel.build/TreblleAPI?with=pgsql,redis" | bash` (create a fresh postgres project via sail)
+        * (cd into repo and `./vendor/bin/sail up` then nav back in a fresh tab)
+        * `./vendor/bin/sail composer require laravel/breeze --dev` (install breeze manually)
+        *  `./vendor/bin/sail artisan breeze:install api` (Install Breeze's "API only" mode & say yes to run migrations)
+        * open app/Models/User.php and add the `HasAPITokens` trait
+
+    * 
 
 ## Side note
 
