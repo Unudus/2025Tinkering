@@ -31,7 +31,11 @@ see root's readme, these are the PHP notes
         *  `./vendor/bin/sail artisan breeze:install api` (Install Breeze's "API only" mode & say yes to run migrations)
         * open app/Models/User.php and add the `HasAPITokens` trait
 
-    * 
+    * Tutor suggests dropping App/Http/Controllers/Controller but I'd rather keep it for loggers and helpers ( user fetching etc)
+    * It's good the tutor is showing failures, and therefore how to fix, but he's not really explaining the fixing process and it's leading to a lot of remove and recover
+    * There's gonna be a bit of drift between the tutor code, he's changing things like DB migration's lambdas which just isn't needed for something like this
+        * Particularly of note, he seems to dislike phpdocs, but good habits still feel like keeping them to me
+    * Making models from CLI makes sense (e.g. `./vendor/bin/sail artisan make:model Service -mf` ) but my old all-by-hand muscle memory hurts doing it. Odd when I use touch and mkdir over IDE
 
 ## Side note
 
