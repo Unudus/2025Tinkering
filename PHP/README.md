@@ -36,6 +36,8 @@ see root's readme, these are the PHP notes
     * There's gonna be a bit of drift between the tutor code, he's changing things like DB migration's lambdas which just isn't needed for something like this
         * Particularly of note, he seems to dislike phpdocs, but good habits still feel like keeping them to me
     * Making models from CLI makes sense (e.g. `./vendor/bin/sail artisan make:model Service -mf` ) but my old all-by-hand muscle memory hurts doing it. Odd when I use touch and mkdir over IDE
+    * An interesting thing is the lean to Ulid. Probably from muscle memory since uuid v7 gives all the same advantages (temporal sorting mainly)
+        * Relatedly casual use of ->string() for labels. It's totally valid with Postgres but you can tell the tutor doesn't think in mySQL or other DB-engines where that'd be a bad habit
 
 ## Side note
 

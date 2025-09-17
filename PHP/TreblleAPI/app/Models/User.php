@@ -6,10 +6,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Service;
+use App\Models\Credential;
 
 class User extends Authenticatable
 {
@@ -50,5 +53,21 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function services(): HasMany
+    {
+        return $this->hasMany(
+            related: Service::class,
+            foreignKey: 'user_id'
+        );
+    }
+
+    public function credentials(): HasMany
+    {
+        return $this->hasMany(
+            related: Credential::class,
+            foreignKey: 'user_id'
+        );
     }
 }
