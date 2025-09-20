@@ -42,6 +42,9 @@ see root's readme, these are the PHP notes
     * PHPunit seems to be able to read these for the tutor but isn't working for me, I've always generated stub functions instead
 * Okay tests are failing, looks like something funky happened to my db after the end of the previous session
     * running the artisan migrate:refresh & migrate:fresh both failed. Tracked issue to a sequencing issue. I'd created the checks before the credentials but checks depends on it. Would have been good for the tutor to make that clearer, that could really mess up inexperienced devs (but i just renamed the migration so the sequences worked out)
+* 5th lesson is a lot of Laravel specific authentication options, would have been nice to have the tutor at least briefly touch on self defined auth (even if just the complexitities of it and suggesting it's not worth it)
+    * Also we jump to making policies at one point without the tutor actually talking about what in this context the.
+* Good reminder of using @property in docblocks to de-magic Eloquent but bad use of changed relationships without catches for data-integrity failures (clearly never caught out there, lucky guy)
 
 ## Side note
 
