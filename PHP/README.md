@@ -45,6 +45,13 @@ see root's readme, these are the PHP notes
 * 5th lesson is a lot of Laravel specific authentication options, would have been nice to have the tutor at least briefly touch on self defined auth (even if just the complexitities of it and suggesting it's not worth it)
     * Also we jump to making policies at one point without the tutor actually talking about what in this context the.
 * Good reminder of using @property in docblocks to de-magic Eloquent but bad use of changed relationships without catches for data-integrity failures (clearly never caught out there, lucky guy)
+* Okay, big disagreement with the Tutor over versioning. They've shown header based version expression & capture, then said "just do explicit URI Version instead".
+    * I wouldn't expect something as a fine-grain as how to setup per-endpoint versioning (how to store legacy code paths, routing flow of execution, handling knotted dependancies etc), but the suggested approach is both coarse and fragile.
+        * Feels like the tutor's never worked with a B2B API, where customers want to change as little as humanly possible but you absolutely need to use versioning to force changes on their end.
+    * There's already 2 versions of tutor code so I'll follow their video code here, but I would have much rather seen them suggest Header-version-expression, minimum-version-endpoint-requirements & breaking-change-vetting (the latter being done as middleware)
+        * We do eventually get to a middleware for "sunsetting", but 
+* The choices over what to explain vs what to just do are also starting to burn. The tutor will take the time to explain something simple but then burn through magic methods & their parameters with narry a comment. Thankfully I'm using this as a refresher and not a learning exercise, but it makes this hard to recommend others use.
+    * Fully a nit-pick because of this friction : you don't need to leave in looking up a good reference for something (sunset HTTP header). Either look it up before recording or put a quick edit in after
 
 ## Side note
 
