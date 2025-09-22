@@ -15,16 +15,18 @@ class RateLimitServiceProvider extends ServiceProvider
     {
         RateLimiter::for(
             name: 'api',
-            callback: function() {Limit::perMinutes(
-                maxAttempts: 60
-            )}
+            callback: function() {return Limit::perMinutes(
+                maxAttempts: 60,
+                decayMinutes:1
+            );}
         );
 
         RateLimiter::for(
             name: 'auth',
-            callback: function() {Limit::perMinutes(
-                maxAttempts: 5
-            )}
+            callback: function() {return Limit::perMinutes(
+                maxAttempts: 5,
+                decayMinutes:1
+            );}
         );
     }
 }
