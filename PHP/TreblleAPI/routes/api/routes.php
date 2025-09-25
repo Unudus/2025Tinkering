@@ -11,7 +11,8 @@ Route::prefix('v1')->as('v1:')->group(function():void {
     })->middleware('sunset: '.now());
 
     // 'throttle:60,1' would be Global rate limit of 60/s, brute force ceiling
-    Route::middleware(['auth:sanctum', 'throttle:api'])->group(function(): void{
+    Route::middleware(['throttle:api'])->group(function(): void {
+    //Route::middleware(['auth:sanctum', 'throttle:api'])->group(function(): void {
         Route::get('/user', function (Request $request) {
             return $request->user();
         })->name('user');

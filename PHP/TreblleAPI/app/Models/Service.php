@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 use App\Models\Check;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Service extends Model
 {
@@ -20,6 +21,21 @@ class Service extends Model
         'url',
         'user_id'
     ];
+
+    protected $casts = [
+        'id' => 'string'
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->id)) {
+                $model->id = (string) Str::ulid();
+            }
+        });
+    }
 
     public function user(): BelongsTo
     {

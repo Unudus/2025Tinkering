@@ -52,6 +52,12 @@ see root's readme, these are the PHP notes
         * We do eventually get to a middleware for "sunsetting", but 
 * The choices over what to explain vs what to just do are also starting to burn. The tutor will take the time to explain something simple but then burn through magic methods & their parameters with narry a comment. Thankfully I'm using this as a refresher and not a learning exercise, but it makes this hard to recommend others use.
     * Fully a nit-pick because of this friction : you don't need to leave in looking up a good reference for something (sunset HTTP header). Either look it up before recording or put a quick edit in after
+* Lesson sequence ick: Given we had a Auth lesson already, turning off the auth vs actually finishing it to the point of not needing to turn it off to work on endpoints would make more sense to me. It'd front-load the course with config/setup, but that mirrors professional efforts in my experience.
+* And more issues that the tutor isn't having but happen on use. Their laravel is auto-magically making ulid's without asking.
+    * I could fix this by adapting the seeder but I think the cleaner answer is tweaking the model's "boot" method to generate one if none exists. You'll also need change the `casts` attribute of the model to make sure it isn't mishandled as an int
+    * Interestingly the User table was fine. As/when I need to I can lift the fix from the Service Model, rather than mass overriding the boot methods on my models
+* Been pretty negative about this course for a bit but positive : totally agree with pagination strategy. Some optimisation by using simple to clean payload, but not full on cursor big data optimisation as default. Good to teach people to reflexively take low hanging fruit while leaving heavy optmisation for as/when.
+    * Also an elegant way of showing user-space-global-consts to people with a app default pagination value.
 
 ## Side note
 
