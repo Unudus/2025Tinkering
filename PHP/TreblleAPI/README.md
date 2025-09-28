@@ -10,6 +10,7 @@ see the [PHP root readme](../README.md) instead of this
 * I'm skipping the local cert step, overkill for a pet project
 * The video & written forms of this don't always match (field names in DB for example). Where it deviates I'm treating the video as authoritive.
 * In the guide, they seem to be able to invote `todo("something")` in test files, without class or function. Whatever enabled this isn't the case, so I've put stubbed in functions using `markTestIncomplete("todo")` to telegraph todo's instead
+* Tutor didn't seem to realise that `Throwable->getCode()` won't return the HTTP-Response-Code when the instance is a subclass with one, and was just defaulting back to 500. For some reason this urk'd me so in bootstrap/app.php you can see I'm checking if the throwable implements the `HttpExceptionInterface` interface and conditionally returning the `HttpExceptionInterface->getStatusCode()` value instead
 
 # How to run, incase of revisiting
 * Make sure the mac/windows-wsl it's run from has PHP (needed for Sail not running of code), Composer (you could skip this but imo it's not worth the hassle) & Docker
