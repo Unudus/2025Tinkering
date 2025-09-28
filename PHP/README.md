@@ -56,8 +56,9 @@ see root's readme, these are the PHP notes
 * And more issues that the tutor isn't having but happen on use. Their laravel is auto-magically making ulid's without asking.
     * I could fix this by adapting the seeder but I think the cleaner answer is tweaking the model's "boot" method to generate one if none exists. You'll also need change the `casts` attribute of the model to make sure it isn't mishandled as an int
     * Interestingly the User table was fine. As/when I need to I can lift the fix from the Service Model, rather than mass overriding the boot methods on my models
+    * I also spotted while doing the "api standards" lesson the Service class didn't have `use Ulids;`. This could be the route cause and I was simply blind to it before.
 * Been pretty negative about this course for a bit but positive : totally agree with pagination strategy. Some optimisation by using simple to clean payload, but not full on cursor big data optimisation as default. Good to teach people to reflexively take low hanging fruit while leaving heavy optmisation for as/when.
-    * Also an elegant way of showing user-space-global-consts to people with a app default pagination value.
+    * Also an elegant way of showing user-space-global-consts to people with a app default pagination value.    
 
 ## Side note
 

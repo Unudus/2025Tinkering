@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Check;
 use App\Models\Service;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,6 +21,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Bobby DropTables',
             'email' => 'a@b.c',
         ]);
+
+        $mainService = Service::factory()->for($user)->create([
+            'name' => 'Trebble API',
+            'url' => 'http://api.trebble.com'
+        ]);
+        Check::factory()->for($mainService)->count(10)->create();
 
         Service::factory()->for($user)->count(1000)->create();
     }
